@@ -10,6 +10,7 @@ public class Book {
  private String title;
  private String author;
  private boolean onLoan;
+ private Borrower borrower;
 
     public Book() {
     }
@@ -21,7 +22,7 @@ public class Book {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -56,5 +57,15 @@ public class Book {
 
     public void setOnLoan(boolean onLoan) {
         this.onLoan = onLoan;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "borrower_id", nullable = false)
+    public Borrower getBorrower() {
+        return borrower;
+    }
+
+    public void setBorrower(Borrower borrower) {
+        this.borrower = borrower;
     }
 }
