@@ -24,7 +24,6 @@ public class DBBook {
         } finally {
             session.close();
         }
-
         return borrower;
     }
 
