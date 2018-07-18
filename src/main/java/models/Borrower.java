@@ -1,9 +1,11 @@
 package models;
 import models.Book;
 
+import javax.persistence.*;
 import java.util.Set;
 
-
+    @Entity
+    @Table(name = "borrowers")
     public class Borrower {
 
         private int id;
@@ -16,6 +18,9 @@ import java.util.Set;
             this.name = name;
         }
 
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "id")
         public int getId() {
             return id;
         }
@@ -23,6 +28,7 @@ import java.util.Set;
             this.id = id;
         }
 
+        @Column(name = "name")
         public String getName() {
             return name;
         }
@@ -30,6 +36,7 @@ import java.util.Set;
             this.name = name;
         }
 
+        @OneToMany(mappedBy = "borrower")
         public Set<Book> getItemsBorrowed() {
             return itemsBorrowed;
         }
