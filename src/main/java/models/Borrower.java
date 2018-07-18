@@ -44,7 +44,9 @@ import java.util.Set;
             this.itemsBorrowed = itemsBorrowed;
         }
 
-
+        public void borrowBook(Book book) {
+            itemsBorrowed.add(book);
+        }
 
     }
 
